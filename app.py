@@ -4,29 +4,7 @@ from openai import OpenAI
 
 # Insert Google Search Console verification meta tag
 components.html(
-    '<meta name="google-site-verification" content="<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw" />">'
-)
-
-st.set_page_config(
-    page_title="Phoenix AI - Study & Code Assistant for Students",
-    page_icon="🔥",
-    This `SyntaxError` happens because a parenthesis `(` was left open somewhere in the multiline `components.html(...)` block, usually caused by a missing closing parenthesis `)` or a mismatched quotation mark.
-
-Here is the fully corrected and cleaned-up `app.py` code with balanced parentheses and proper syntax.
-
-### How to Fix It
-
-1. Go to your `phoenix-ai` repository on [GitHub](https://github.com).
-2. Open **`app.py`**, click the pencil edit icon, and replace the entire contents with this clean code:
-
-```python
-import streamlit as st
-import streamlit.components.v1 as components
-from openai import OpenAI
-
-# Insert Google Search Console verification meta tag
-components.html(
-    '<meta name="google-site-verification" content="YOUR_COPIED_VERIFICATION_TOKEN_HERE">',
+    '<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw">',
     height=0,
 )
 
@@ -49,7 +27,7 @@ if not api_key:
   st.stop()
 
 client = OpenAI(
-    base_url="[https://api.groq.com/openai/v1](https://api.groq.com/openai/v1)",
+    base_url="https://api.groq.com/openai/v1",
     api_key=api_key,
 )
 
