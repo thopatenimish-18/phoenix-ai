@@ -5,7 +5,6 @@ from openai import OpenAI
 # Insert Google Search Console verification meta tag
 components.html(
     '<meta name="google-site-verification" content="<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw" />">'
-)
 
 st.set_page_config(
     page_title="Phoenix AI - Study & Code Assistant for Students",
