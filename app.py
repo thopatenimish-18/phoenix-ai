@@ -4,7 +4,7 @@ from openai import OpenAI
 
 # Insert Google Search Console verification meta tag
 components.html(
-    '<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw">',
+   '<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw" />">',
     height=0,
 )
 
