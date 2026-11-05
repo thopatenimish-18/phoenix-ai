@@ -4,7 +4,7 @@ from openai import OpenAI
 
 # Insert Google Search Console verification meta tag
 components.html(
-   '<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw" />">',
+    '<meta name="google-site-verification" content="tiR12X2gg_0rtRIbTC_671DyJ48ayNxchHgvPgB7spw">',
     height=0,
 )
 
@@ -14,8 +14,40 @@ st.set_page_config(
     layout="centered",
 )
 
+# Initialize student login state
+if "logged_in" not in st.session_state:
+  st.session_state.logged_in = False
+if "student_name" not in st.session_state:
+  st.session_state.student_name = ""
+
+# Student Login Screen
+if not st.session_state.logged_in:
+  st.title("🔥 Phoenix: Student Login")
+  st.write("Enter your name or student ID to access your AI assistant.")
+
+  with st.form("login_form"):
+    name_input = st.text_input("Your Name / Student ID")
+    submit_button = st.form_submit_button("Log In to Phoenix")
+
+    if submit_button:
+      if name_input.strip():
+        st.session_state.logged_in = True
+        st.session_state.student_name = name_input.strip()
+        st.rerun()
+      else:
+        st.error("Please enter a valid name or ID to continue.")
+  st.stop()
+
+# Main App Interface (For Logged-In Students)
+st.sidebar.write(f"👤 Logged in as: **{st.session_state.student_name}**")
+if st.sidebar.button("Log Out"):
+  st.session_state.logged_in = False
+  st.session_state.student_name = ""
+  st.session_state.messages = []
+  st.rerun()
+
 st.title("🔥 Phoenix: Independent AI Assistant")
-st.write("Powered by an independent open-source AI model.")
+st.write(f"Hello, {st.session_state.student_name}! Powered by an independent open-source AI model.")
 
 # Initialize Groq client
 api_key = st.secrets.get("GROQ_API_KEY")
@@ -46,7 +78,7 @@ if user_prompt := st.chat_input("Ask Phoenix anything..."):
   with st.chat_message("assistant"):
     with st.spinner("Phoenix is thinking..."):
       system_instruction = (
-          "You are Phoenix, an independent custom AI assistant."
+          "You are Phoenix, an independent custom AI assistant helping students."
       )
 
       try:
