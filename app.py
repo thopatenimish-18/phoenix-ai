@@ -42,11 +42,10 @@ if user_prompt := st.chat_input(
           "help programmers write clean code, troubleshoot errors, and debug step-by-step."
       )
 
-     response = client.models.generate_content(
-    model="gemini-2.0-flash",
-    contents=user_prompt,
-    config={"system_instruction": system_instruction},
-)
+      response = client.models.generate_content(
+          model="gemini-2.0-flash",
+          contents=user_prompt,
+          config={"system_instruction": system_instruction},
       )
       ai_response = response.text
       st.markdown(ai_response)
