@@ -43,7 +43,7 @@ if user_prompt := st.chat_input(
       )
 
       response = client.models.generate_content(
-          model="gemini-2.0-flash",
+          model="gemini-2.5-flash",
           contents=user_prompt,
           config={"system_instruction": system_instruction},
       )
